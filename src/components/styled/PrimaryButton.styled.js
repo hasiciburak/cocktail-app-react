@@ -3,7 +3,7 @@ import tw from "twin.macro";
 const PrimaryButton = tw.button`
     flex
     flex-row
-    irwma
+    align-items[center]
     rounded
     text-blue-900
     font-semibold
