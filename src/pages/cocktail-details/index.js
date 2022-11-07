@@ -77,7 +77,7 @@ const CocktailDetails = () => {
         <div className="w-full">
           <IngredientsArea />
         </div>
-        <div className="mt-4">
+        <div className="mt-4 mb-20">
           <Header3>Instructions</Header3>
           <p className="mt-2">{drinkData.strInstructions}</p>
         </div>
