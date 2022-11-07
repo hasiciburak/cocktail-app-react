@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 
 const Header1 = tw.h1`
-    text-black
+    text-yellow-900
     text-5xl
     tracking-tight
     font-playfair-display

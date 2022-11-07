@@ -1,0 +1,12 @@
+.arrow-right-icon {
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.details-btn:hover {
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  & > .arrow-right-icon {
+    transform: translateX(5px) scale(1.1);
+  }
+}

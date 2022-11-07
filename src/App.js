@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import WrapperContainer from "./components/styled/WrapperContainer";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";

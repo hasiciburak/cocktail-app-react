@@ -1,0 +1,10 @@
+.arrow-left-icon {
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.back-to-main-page:hover > .arrow-left-icon {
+  transform: translateX(-5px);
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
