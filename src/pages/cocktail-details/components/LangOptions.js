@@ -1,9 +1,10 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { US, ES, CN, IT, FR } from "country-flag-icons/react/3x2";
+import { US, ES, CN, IT, FR, DE } from "country-flag-icons/react/3x2";
+import PropTypes from "prop-types";
 
-function LangOptions() {
+function LangOptions(props) {
   return (
     <Menu as="div" className="relative inline-block float-right">
       <div>
@@ -32,6 +33,7 @@ function LangOptions() {
                   className={`${
                     active ? "bg-yellow-900 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  onClick={() => props.setLanguage("EN")}
                 >
                   <US title="United States" className="w-5 mr-2" />
                   English
@@ -44,6 +46,20 @@ function LangOptions() {
                   className={`${
                     active ? "bg-yellow-900 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  onClick={() => props.setLanguage("DE")}
+                >
+                  <DE title="German" className="w-5 mr-2" />
+                  German
+                </button>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <button
+                  className={`${
+                    active ? "bg-yellow-900 text-white" : "text-gray-900"
+                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  onClick={() => props.setLanguage("FR")}
                 >
                   <FR title="French" className="w-5 mr-2" />
                   French
@@ -56,6 +72,7 @@ function LangOptions() {
                   className={`${
                     active ? "bg-yellow-900 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  onClick={() => props.setLanguage("ES")}
                 >
                   <ES title="Spanish" className="w-5 mr-2" />
                   Spanish
@@ -68,6 +85,7 @@ function LangOptions() {
                   className={`${
                     active ? "bg-yellow-900 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  onClick={() => props.setLanguage("IT")}
                 >
                   <IT title="Italian" className="w-5 mr-2" />
                   Italian
@@ -80,6 +98,7 @@ function LangOptions() {
                   className={`${
                     active ? "bg-yellow-900 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  onClick={() => props.setLanguage("HANT")}
                 >
                   <CN title="Mandarin Chinese" className="w-5 mr-2" />
                   Mandarin Chinese
@@ -92,6 +111,7 @@ function LangOptions() {
                   className={`${
                     active ? "bg-yellow-900 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  onClick={() => props.setLanguage("HANS")}
                 >
                   <CN title="Simplified Chinese" className="w-5 mr-2" />
                   Simplified Chinese
@@ -104,5 +124,10 @@ function LangOptions() {
     </Menu>
   );
 }
+
+LangOptions.propTypes = {
+  language: PropTypes.string,
+  setLanguage: PropTypes.func,
+};
 
 export default LangOptions;

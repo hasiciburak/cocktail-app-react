@@ -10,13 +10,17 @@ import Header3 from "../../components/styled/Header3.styled";
 import IngredientsArea from "./components/IngredientsArea";
 import axios from "axios";
 const CocktailDetails = () => {
+  // Hooks
   const [drinkData, setDrinkData] = useState({});
+  const [language, setLanguage] = useState("EN");
+
+  // Fetching random cocktail data from the API
   const getDrinkDetail = async () => {
     await axios
-      .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+      .get("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
       .then((res) => {
         console.log(res.data.drinks);
-        setDrinkData(res.data.drinks[0]);
+        setDrinkData(res.data.drinks[22]);
       })
       .catch((error) => alert(error));
   };
@@ -71,15 +75,54 @@ const CocktailDetails = () => {
             <TasteChip>{drinkData.strCategory}</TasteChip>
           </div>
           <div className="">
-            <LangOptions />
+            <LangOptions language={language} setLanguage={setLanguage} />
           </div>
         </div>
         <div className="w-full">
           <IngredientsArea />
         </div>
-        <div className="mt-4 mb-20">
+        <div className="my-4">
           <Header3>Instructions</Header3>
-          <p className="mt-2">{drinkData.strInstructions}</p>
+          <p className="mt-2">
+            {language === "EN"
+              ? drinkData.strInstructions
+              : language === "ES"
+              ? drinkData.strInstructionsES !== null
+                ? drinkData.strInstructionsES
+                : "No encontramos ninguna instrucción!"
+              : language === "DE"
+              ? drinkData.strInstructionsDE !== null
+                ? drinkData.strInstructionsDE
+                : "Wir haben keine Anleitung gefunden!"
+              : language === "FR"
+              ? drinkData.strInstructionsFR
+                ? drinkData.strInstructionsFR
+                : "Nous n'avons pas trouvé d'instructions!"
+              : language === "IT"
+              ? drinkData.strInstructionsIT
+                ? drinkData.strInstructionsIT
+                : "Non abbiamo trovato istruzioni!"
+              : language === "HANS"
+              ? drinkData["strInstructionsZH-HANS"]
+                ? drinkData["strInstructionsZH-HANS"]
+                : "我们没有找到任何说明!"
+              : language === "HANT"
+              ? drinkData["strInstructionsZH-HANT"]
+                ? drinkData["strInstructionsZH-HANT"]
+                : "我們沒有找到任何說明!"
+              : "We didn't find any instructions!"}
+          </p>
+        </div>
+        <div className="my-4">
+          <Header3 className="mb-6">Preperation Video</Header3>
+          <iframe
+            id="ytplayer"
+            type="text/html"
+            style={{ width: "100%", aspectRatio: "16/9" }}
+            src={drinkData.strVideo}
+            frameborder="0"
+            title="Youtube Video"
+          ></iframe>
         </div>
       </div>
     </div>
