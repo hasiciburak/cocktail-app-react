@@ -84,33 +84,49 @@ const CocktailDetails = () => {
         <div className="my-4">
           <Header3>Instructions</Header3>
           <p className="mt-2">
-            {language === "EN"
-              ? drinkData.strInstructions
-              : language === "ES"
-              ? drinkData.strInstructionsES !== null
-                ? drinkData.strInstructionsES
-                : "No encontramos ninguna instrucción!"
-              : language === "DE"
-              ? drinkData.strInstructionsDE !== null
-                ? drinkData.strInstructionsDE
-                : "Wir haben keine Anleitung gefunden!"
-              : language === "FR"
-              ? drinkData.strInstructionsFR
-                ? drinkData.strInstructionsFR
-                : "Nous n'avons pas trouvé d'instructions!"
-              : language === "IT"
-              ? drinkData.strInstructionsIT
-                ? drinkData.strInstructionsIT
-                : "Non abbiamo trovato istruzioni!"
-              : language === "HANS"
-              ? drinkData["strInstructionsZH-HANS"]
-                ? drinkData["strInstructionsZH-HANS"]
-                : "我们没有找到任何说明!"
-              : language === "HANT"
-              ? drinkData["strInstructionsZH-HANT"]
-                ? drinkData["strInstructionsZH-HANT"]
-                : "我們沒有找到任何說明!"
-              : "We didn't find any instructions!"}
+            {language === "EN" ? (
+              drinkData.strInstructions
+            ) : language === "ES" ? (
+              drinkData.strInstructionsES !== null ? (
+                drinkData.strInstructionsES
+              ) : (
+                <span>No encontramos ninguna instrucción!🥲</span>
+              )
+            ) : language === "DE" ? (
+              drinkData.strInstructionsDE !== null ? (
+                drinkData.strInstructionsDE
+              ) : (
+                <span>Wir haben keine Anleitung gefunden!🥲</span>
+              )
+            ) : language === "FR" ? (
+              drinkData.strInstructionsFR ? (
+                drinkData.strInstructionsFR
+              ) : (
+                <span>Nous n'avons pas trouvé d'instructions!🥲</span>
+              )
+            ) : language === "IT" ? (
+              drinkData.strInstructionsIT ? (
+                drinkData.strInstructionsIT
+              ) : (
+                <span>Non abbiamo trovato istruzioni!🥲</span>
+              )
+            ) : language === "HANS" ? (
+              drinkData["strInstructionsZH-HANS"] ? (
+                drinkData["strInstructionsZH-HANS"]
+              ) : (
+                <span>"我们没有找到任何说明!"&nbsp;🥲</span>
+              )
+            ) : language === "HANT" ? (
+              drinkData["strInstructionsZH-HANT"] ? (
+                drinkData["strInstructionsZH-HANT"]
+              ) : (
+                <span className="flex flex-row gap-2 text-xl">
+                  &nbsp;&nbsp;我們沒有找到任何說明&nbsp;🥲
+                </span>
+              )
+            ) : (
+              <span>We didn't find any instructions!🥲</span>
+            )}
           </p>
         </div>
         <div className="my-4">
