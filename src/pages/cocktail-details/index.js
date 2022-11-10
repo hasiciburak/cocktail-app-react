@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import "../../asstes/scss/cocktail-details.scss";
+import "../../assets/scss/cocktail-details.scss";
 import Header2 from "../../components/styled/Header2.styled";
 import TasteChip from "../../components/styled/TasteChip.styled";
 import { Link } from "react-router-dom";

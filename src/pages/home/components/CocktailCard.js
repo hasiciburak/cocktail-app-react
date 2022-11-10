@@ -1,5 +1,5 @@
 import React from "react";
-import cocktailImg from "../../../asstes/img/cocktail-img.jpg";
+import cocktailImg from "../../../assets/img/cocktail-img.jpg";
 import Header4 from "../../../components/styled/Header4.styled";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 

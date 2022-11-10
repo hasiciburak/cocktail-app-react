@@ -2,7 +2,7 @@ import React from "react";
 import ActionsRow from "./components/ActionsRow";
 import SloganArea from "./components/SloganArea";
 import SearchResults from "./components/SearchResults";
-import "../../asstes/scss/home.scss";
+import "../../assets/scss/home.scss";
 
 const Home = () => {
   return (
