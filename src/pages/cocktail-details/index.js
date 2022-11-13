@@ -48,7 +48,7 @@ const CocktailDetails = () => {
         <Description>Crazy cocktail for crazy moments</Description>
         <Description>Last Modified: {drinkData.dateModified}</Description>
       </div>
-      <div className="flex flex-row gap-2 w-full mt-2">
+      <div className="flex flex-row gap-2 w-full overflow-auto  scrollbar-hide mt-2 ">
         <TasteChip>Spicy</TasteChip>
         <TasteChip>Tasty</TasteChip>
         <TasteChip>Sweet</TasteChip>
@@ -69,7 +69,7 @@ const CocktailDetails = () => {
             <></>
           )}
         </div>
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex flex-col-reverse mt-3 md:mt-0 md:flex-row md:items-center md:justify-between">
           <div className="flex gap-2 items-center mt-2 mb-4">
             <Description>Category:</Description>
             <TasteChip>{drinkData.strCategory}</TasteChip>
@@ -138,6 +138,20 @@ const CocktailDetails = () => {
             src={drinkData.strVideo}
             frameborder="0"
             title="Youtube Video"
+          ></iframe>
+        </div>
+        <div className="mb-20">
+          <Header3 className="mb-6">Recommended Playlist During Prep</Header3>
+          <iframe
+            style={{ borderRadius: "12px" }}
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DX6syac0fWYdV?utm_source=generator&theme=0"
+            width="100%"
+            height="380"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="Cocktail Playlist"
           ></iframe>
         </div>
       </div>

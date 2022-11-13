@@ -13,5 +13,6 @@ const PrimaryButton = tw.button`
     w-full
     ring-2
     gap-2
+    py-2
 `;
 export default PrimaryButton;

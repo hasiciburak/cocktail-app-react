@@ -5,7 +5,7 @@ const WrapperContainer = tw.div`
     max-w-[1100px]
     mx-auto
     px-10
-    sm:px-0
+    md:px-6
 `;
 
 export default WrapperContainer;
