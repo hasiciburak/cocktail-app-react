@@ -9,7 +9,7 @@ import LangOptions from "./components/LangOptions";
 import Header3 from "../../components/styled/Header3.styled";
 import IngredientsArea from "./components/IngredientsArea";
 import PropTypes from "prop-types";
-
+import { WhatsappIcon, EmailIcon, InstapaperIcon } from "react-share";
 const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
   // Hooks
   const [language, setLanguage] = useState("EN");
@@ -65,6 +65,14 @@ const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
             <LangOptions language={language} setLanguage={setLanguage} />
           </div>
         </div>
+        <div>
+          <Header3>Share on Social Media</Header3>
+        </div>
+        <div className="flex flex-row gap-2">
+          <EmailIcon className="w-9" borderRadius="100%"></EmailIcon>
+          <InstapaperIcon className="w-9" borderRadius="100%"></InstapaperIcon>
+          <WhatsappIcon className="w-9" borderRadius="100%"></WhatsappIcon>
+        </div>
         <div className="w-full">
           <IngredientsArea />
         </div>
@@ -116,6 +124,7 @@ const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
             )}
           </p>
         </div>
+
         {selectedCocktail.strVideo !== null && (
           <div className="my-4">
             <Header3 className="mb-6">Preperation Video</Header3>
