@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../assets/scss/cocktail-details.scss";
 import Header2 from "../../components/styled/Header2.styled";
 import TasteChip from "../../components/styled/TasteChip.styled";
@@ -8,7 +8,6 @@ import Description from "../../components/styled/Description.styled";
 import LangOptions from "./components/LangOptions";
 import Header3 from "../../components/styled/Header3.styled";
 import IngredientsArea from "./components/IngredientsArea";
-import axios from "axios";
 import PropTypes from "prop-types";
 
 const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
@@ -32,7 +31,6 @@ const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
       {/* COCKTAIL HEADER */}
       <Header2>{selectedCocktail.strDrink}</Header2>
       <div className="flex flex-row justify-between">
-        <Description>Crazy cocktail for crazy moments</Description>
         <Description>
           Last Modified: {selectedCocktail.dateModified}
         </Description>
@@ -118,17 +116,20 @@ const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
             )}
           </p>
         </div>
-        <div className="my-4">
-          <Header3 className="mb-6">Preperation Video</Header3>
-          <iframe
-            id="ytplayer"
-            type="text/html"
-            style={{ width: "100%", aspectRatio: "16/9" }}
-            src={selectedCocktail.strVideo}
-            frameborder="0"
-            title="Youtube Video"
-          ></iframe>
-        </div>
+        {selectedCocktail.strVideo !== null && (
+          <div className="my-4">
+            <Header3 className="mb-6">Preperation Video</Header3>
+            <iframe
+              id="ytplayer"
+              type="text/html"
+              style={{ width: "100%", aspectRatio: "16/9" }}
+              src={selectedCocktail.strVideo}
+              frameborder="0"
+              title="Youtube Video"
+            ></iframe>
+          </div>
+        )}
+
         <div className="mb-20">
           <Header3 className="mb-6">Recommended Playlist During Prep</Header3>
           <iframe

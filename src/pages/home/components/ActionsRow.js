@@ -1,10 +1,28 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import PropTypes from "prop-types";
 import PrimaryButton from "../../../components/styled/PrimaryButton.styled";
-const ActionsRow = ({ searchQuery, setSearchQuery }) => {
-  // const navigate = useNavigate();
+import axios from "axios";
+import StyledLink from "../../../components/styled/StyledLink.styled";
+import { useNavigate } from "react-router-dom";
+const ActionsRow = ({
+  searchQuery,
+  setSearchQuery,
+  selectedCocktail,
+  setSelectedCocktail,
+}) => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const fetchRandomCocktail = async () => {
+    await axios
+      .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+      .then((res) => {
+        setSelectedCocktail(res.data.drinks[0]);
+        console.log(selectedCocktail);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="flex flex-col justify-center align-middle pt-5 w-full text-center">
@@ -36,15 +54,24 @@ const ActionsRow = ({ searchQuery, setSearchQuery }) => {
         </div>
       </div>
       <div className="text-center mt-2">
-        <Link
-          to="/cocktail-details"
+        <StyledLink
           className="underline mt-3 text-sm cursor-pointer text-gray-400 hover:text-gray-600"
+          onClick={() => {
+            fetchRandomCocktail();
+            navigate(`/cocktail-details/${selectedCocktail.idDrink}`);
+          }}
         >
           Feeling Lucky Today...
-        </Link>
+        </StyledLink>
       </div>
     </div>
   );
+};
+ActionsRow.propTypes = {
+  searchQuery: PropTypes.any,
+  setSearchQuery: PropTypes.any,
+  selectedCocktail: PropTypes.any,
+  setSelectedCocktail: PropTypes.any,
 };
 
 export default ActionsRow;

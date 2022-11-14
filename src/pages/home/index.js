@@ -30,7 +30,12 @@ const Home = ({ selectedCocktail, setSelectedCocktail }) => {
   return (
     <div className="text-center mx-auto w-full">
       <SloganArea />
-      <ActionsRow searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <ActionsRow
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        selectedCocktail={selectedCocktail}
+        setSelectedCocktail={setSelectedCocktail}
+      />
       <SearchResults
         results={results}
         selectedCocktail={selectedCocktail}
