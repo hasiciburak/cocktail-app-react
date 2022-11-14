@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import ActionsRow from "./components/ActionsRow";
 import SloganArea from "./components/SloganArea";
 import SearchResults from "./components/SearchResults";
-import "../../assets/scss/home.scss";
+import PropTypes from "prop-types";
 import axios from "axios";
+import "../../assets/scss/home.scss";
 
-const Home = () => {
+const Home = ({ selectedCocktail, setSelectedCocktail }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState([]);
 
@@ -30,9 +31,18 @@ const Home = () => {
     <div className="text-center mx-auto w-full">
       <SloganArea />
       <ActionsRow searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <SearchResults results={results} />
+      <SearchResults
+        results={results}
+        selectedCocktail={selectedCocktail}
+        setSelectedCocktail={setSelectedCocktail}
+      />
     </div>
   );
+};
+
+Home.propTypes = {
+  selectedCocktail: PropTypes.any,
+  setSelectedCocktail: PropTypes.any,
 };
 
 export default Home;

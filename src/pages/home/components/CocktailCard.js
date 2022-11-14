@@ -4,7 +4,7 @@ import Header4 from "../../../components/styled/Header4.styled";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-const CocktailCard = ({ data }) => {
+const CocktailCard = ({ data, selectedCocktail, setSelectedCocktail }) => {
   const navigate = useNavigate();
   return (
     <div className="p-3 bg-white rounded-xl flex flex-col justify-between">
@@ -19,6 +19,8 @@ const CocktailCard = ({ data }) => {
         className="details-btn text-sm mt-2 px-2 bg-gray-100 w-full py-2 rounded-sm flex items-center gap-3 justify-center"
         onClick={() => {
           navigate(`/cocktail-details/${data.idDrink}`);
+          console.log(selectedCocktail);
+          setSelectedCocktail(data);
         }}
       >
         Look for Details
@@ -30,6 +32,8 @@ const CocktailCard = ({ data }) => {
 
 CocktailCard.propTypes = {
   data: PropTypes.object,
+  selectedCockail: PropTypes.any,
+  setSelectedCocktail: PropTypes.any,
 };
 
 export default CocktailCard;

@@ -3,7 +3,7 @@ import CocktailCard from "./CocktailCard";
 import Header2 from "../../../components/styled/Header2.styled";
 import Description from "../../../components/styled/Description.styled";
 import PropTypes from "prop-types";
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, selectedCocktail, setSelectedCocktail }) => {
   return (
     <div className="w-full text-left">
       <div className="my-2">
@@ -16,7 +16,12 @@ const SearchResults = ({ results }) => {
         {results != null &&
           results.map((drink) => {
             return results != null ? (
-              <CocktailCard key={drink.idDrink} data={drink} />
+              <CocktailCard
+                key={drink.idDrink}
+                data={drink}
+                selectedCocktail={selectedCocktail}
+                setSelectedCocktail={setSelectedCocktail}
+              />
             ) : (
               <p>Did not find any results</p>
             );
@@ -28,6 +33,8 @@ const SearchResults = ({ results }) => {
 
 SearchResults.propTypes = {
   results: PropTypes.array,
+  selectedCocktail: PropTypes.any,
+  setSelectedCocktail: PropTypes.any,
 };
 
 export default SearchResults;

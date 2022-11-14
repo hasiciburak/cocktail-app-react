@@ -9,26 +9,13 @@ import LangOptions from "./components/LangOptions";
 import Header3 from "../../components/styled/Header3.styled";
 import IngredientsArea from "./components/IngredientsArea";
 import axios from "axios";
-const CocktailDetails = () => {
+import PropTypes from "prop-types";
+
+const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
   // Hooks
-  const [drinkData, setDrinkData] = useState({});
   const [language, setLanguage] = useState("EN");
 
   // Fetching random cocktail data from the API
-  const getDrinkDetail = async () => {
-    await axios
-      .get("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
-      .then((res) => {
-        console.log(res.data.drinks);
-        setDrinkData(res.data.drinks[22]);
-      })
-      .catch((error) => alert(error));
-  };
-
-  useLayoutEffect(() => {
-    getDrinkDetail();
-    console.log("i fire once");
-  }, []);
 
   return (
     <div>
@@ -43,27 +30,29 @@ const CocktailDetails = () => {
         Back to Main Page
       </Link>
       {/* COCKTAIL HEADER */}
-      <Header2>{drinkData.strDrink}</Header2>
+      <Header2>{selectedCocktail.strDrink}</Header2>
       <div className="flex flex-row justify-between">
         <Description>Crazy cocktail for crazy moments</Description>
-        <Description>Last Modified: {drinkData.dateModified}</Description>
+        <Description>
+          Last Modified: {selectedCocktail.dateModified}
+        </Description>
       </div>
       <div className="flex flex-row gap-2 w-full overflow-auto  scrollbar-hide mt-2 ">
         <TasteChip>Spicy</TasteChip>
         <TasteChip>Tasty</TasteChip>
         <TasteChip>Sweet</TasteChip>
-        <TasteChip>{drinkData.strAlcoholic}</TasteChip>
+        <TasteChip>{selectedCocktail.strAlcoholic}</TasteChip>
       </div>
       <div>
         <img
-          src={drinkData.strDrinkThumb}
+          src={selectedCocktail.strDrinkThumb}
           className="w-full aspect-[16/9] mt-5 object-cover rounded-xl"
           alt="Deneme"
         />
         <div>
-          {drinkData.strImageAttribution !== null ? (
+          {selectedCocktail.strImageAttribution !== null ? (
             <Description className="mt-2">
-              Attribution: {drinkData.strImageAttribution}
+              Attribution: {selectedCocktail.strImageAttribution}
             </Description>
           ) : (
             <></>
@@ -72,7 +61,7 @@ const CocktailDetails = () => {
         <div className="w-full flex flex-col-reverse mt-3 md:mt-0 md:flex-row md:items-center md:justify-between">
           <div className="flex gap-2 items-center mt-2 mb-4">
             <Description>Category:</Description>
-            <TasteChip>{drinkData.strCategory}</TasteChip>
+            <TasteChip>{selectedCocktail.strCategory}</TasteChip>
           </div>
           <div className="">
             <LangOptions language={language} setLanguage={setLanguage} />
@@ -85,40 +74,40 @@ const CocktailDetails = () => {
           <Header3>Instructions</Header3>
           <p className="mt-2">
             {language === "EN" ? (
-              drinkData.strInstructions
+              selectedCocktail.strInstructions
             ) : language === "ES" ? (
-              drinkData.strInstructionsES !== null ? (
-                drinkData.strInstructionsES
+              selectedCocktail.strInstructionsES !== null ? (
+                selectedCocktail.strInstructionsES
               ) : (
                 <span>No encontramos ninguna instrucción!🥲</span>
               )
             ) : language === "DE" ? (
-              drinkData.strInstructionsDE !== null ? (
-                drinkData.strInstructionsDE
+              selectedCocktail.strInstructionsDE !== null ? (
+                selectedCocktail.strInstructionsDE
               ) : (
                 <span>Wir haben keine Anleitung gefunden!🥲</span>
               )
             ) : language === "FR" ? (
-              drinkData.strInstructionsFR ? (
-                drinkData.strInstructionsFR
+              selectedCocktail.strInstructionsFR ? (
+                selectedCocktail.strInstructionsFR
               ) : (
                 <span>Nous n'avons pas trouvé d'instructions!🥲</span>
               )
             ) : language === "IT" ? (
-              drinkData.strInstructionsIT ? (
-                drinkData.strInstructionsIT
+              selectedCocktail.strInstructionsIT ? (
+                selectedCocktail.strInstructionsIT
               ) : (
                 <span>Non abbiamo trovato istruzioni!🥲</span>
               )
             ) : language === "HANS" ? (
-              drinkData["strInstructionsZH-HANS"] ? (
-                drinkData["strInstructionsZH-HANS"]
+              selectedCocktail["strInstructionsZH-HANS"] ? (
+                selectedCocktail["strInstructionsZH-HANS"]
               ) : (
                 <span>"我们没有找到任何说明!"&nbsp;🥲</span>
               )
             ) : language === "HANT" ? (
-              drinkData["strInstructionsZH-HANT"] ? (
-                drinkData["strInstructionsZH-HANT"]
+              selectedCocktail["strInstructionsZH-HANT"] ? (
+                selectedCocktail["strInstructionsZH-HANT"]
               ) : (
                 <span className="flex flex-row gap-2 text-xl">
                   &nbsp;&nbsp;我們沒有找到任何說明&nbsp;🥲
@@ -135,7 +124,7 @@ const CocktailDetails = () => {
             id="ytplayer"
             type="text/html"
             style={{ width: "100%", aspectRatio: "16/9" }}
-            src={drinkData.strVideo}
+            src={selectedCocktail.strVideo}
             frameborder="0"
             title="Youtube Video"
           ></iframe>
@@ -157,6 +146,11 @@ const CocktailDetails = () => {
       </div>
     </div>
   );
+};
+
+CocktailDetails.propTypes = {
+  selectedCocktail: PropTypes.any,
+  setSelectedCocktail: PropTypes.any,
 };
 
 export default CocktailDetails;
