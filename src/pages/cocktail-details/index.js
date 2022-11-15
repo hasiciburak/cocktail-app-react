@@ -10,11 +10,15 @@ import Header3 from "../../components/styled/Header3.styled";
 import IngredientsArea from "./components/IngredientsArea";
 import PropTypes from "prop-types";
 import { WhatsappIcon, EmailIcon, InstapaperIcon } from "react-share";
+import { useEffect } from "react";
 const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
   // Hooks
   const [language, setLanguage] = useState("EN");
 
-  // Fetching random cocktail data from the API
+  // Changing Title To Cocktail Name
+  useEffect(() => {
+    document.title = `${selectedCocktail.strDrink} - The Crazy Bartender`;
+  }, []);
 
   return (
     <div>
@@ -69,12 +73,21 @@ const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
           <Header3>Share on Social Media</Header3>
         </div>
         <div className="flex flex-row gap-2">
-          <EmailIcon className="w-9" borderRadius="100%"></EmailIcon>
-          <InstapaperIcon className="w-9" borderRadius="100%"></InstapaperIcon>
-          <WhatsappIcon className="w-9" borderRadius="100%"></WhatsappIcon>
+          <EmailIcon
+            className="w-9 share-button"
+            borderRadius="100%"
+          ></EmailIcon>
+          <InstapaperIcon
+            className="w-9 share-button"
+            borderRadius="100%"
+          ></InstapaperIcon>
+          <WhatsappIcon
+            className="w-9 share-button"
+            borderRadius="100%"
+          ></WhatsappIcon>
         </div>
         <div className="w-full">
-          <IngredientsArea />
+          <IngredientsArea selectedCocktail={selectedCocktail} />
         </div>
         <div className="my-4">
           <Header3>Instructions</Header3>

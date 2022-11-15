@@ -5,13 +5,20 @@ const PrimaryButton = tw.button`
     flex-row
     align-items[center]
     rounded
-    text-blue-900
+    text-yellow-900
     font-semibold
     justify-center
-    bg-blue-300
+    bg-yellow-300
     h-full
     w-full
     ring-2
+    ring-transparent
+    duration-300
+    ease-in-out
+    active:ring-yellow-900
+    active:ease-in-out
+    active:duration-300
+    hover:bg-yellow-400
     gap-2
     py-2
 `;

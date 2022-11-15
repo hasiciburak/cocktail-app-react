@@ -7,7 +7,13 @@ import { useNavigate } from "react-router-dom";
 const CocktailCard = ({ data, selectedCocktail, setSelectedCocktail }) => {
   const navigate = useNavigate();
   return (
-    <div className="p-3 bg-white rounded-xl flex flex-col justify-between">
+    <div
+      className="p-3 bg-white rounded-xl flex flex-col justify-between"
+      onClick={() => {
+        navigate(`/cocktail-details/${data.idDrink}`);
+        setSelectedCocktail(data);
+      }}
+    >
       <img
         src={data.strDrinkThumb}
         alt="A cocktail with orange inside"

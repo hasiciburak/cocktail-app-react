@@ -1,8 +1,9 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import Header3 from "../../../components/styled/Header3.styled";
+import PropTypes from "prop-types";
 
-export default function IngredientsArea() {
+export default function IngredientsArea({ selectedCocktail }) {
   return (
     <div className="w-inherit mt-2">
       <div className="w-full rounded-md bg-gray-900 bg-opacity-5 p-2">
@@ -18,12 +19,7 @@ export default function IngredientsArea() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-black">
-                <ul>
-                  <li>Vodka 1/2oz</li>
-                  <li>Vodka 4.5cl</li>
-                  <li>Vodka 2 spoons</li>
-                  <li>Vodka</li>
-                </ul>
+                <ul></ul>
               </Disclosure.Panel>
             </>
           )}
@@ -32,3 +28,7 @@ export default function IngredientsArea() {
     </div>
   );
 }
+
+IngredientsArea.propTypes = {
+  selectedCocktail: PropTypes.object,
+};
