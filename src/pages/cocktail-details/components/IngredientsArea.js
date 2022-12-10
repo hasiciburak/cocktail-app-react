@@ -19,7 +19,18 @@ export default function IngredientsArea({ selectedCocktail }) {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-black">
-                <ul></ul>
+                <ul>
+                  {Array.apply(0, Array(10)).map(function (x, i) {
+                    return (
+                      selectedCocktail[`strIngredient${i}`] != null && (
+                        <li key={i} className="list-disc ml-4">
+                          {selectedCocktail[`strIngredient${i}`]} &nbsp;
+                          {selectedCocktail[`strMeasure${i}`]}
+                        </li>
+                      )
+                    );
+                  })}
+                </ul>
               </Disclosure.Panel>
             </>
           )}
