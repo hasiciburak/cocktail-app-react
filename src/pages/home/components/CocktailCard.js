@@ -7,7 +7,7 @@ const CocktailCard = ({ data, selectedCocktail, setSelectedCocktail }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="p-3 bg-white rounded-xl flex flex-col justify-between"
+      className="p-3 bg-white rounded-xl flex flex-col justify-between transition ease-in-out hover:-translate-y-2 duration-300 cursor-pointer"
       onClick={() => {
         navigate(`/cocktail-details/${data.idDrink}`);
         setSelectedCocktail(data);
