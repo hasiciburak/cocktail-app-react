@@ -25,6 +25,7 @@ const Home = ({ selectedCocktail, setSelectedCocktail }) => {
   useEffect(() => {
     fetchSearchResults();
     document.title = "Home - The Crazy Bartender";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   return (

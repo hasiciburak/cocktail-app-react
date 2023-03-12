@@ -18,6 +18,7 @@ const CocktailDetails = ({ selectedCocktail, setSelectedCocktail }) => {
   // Changing Title To Cocktail Name
   useEffect(() => {
     document.title = `${selectedCocktail.strDrink} - The Crazy Bartender`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

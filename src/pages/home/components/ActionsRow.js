@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import PropTypes from "prop-types";
 import PrimaryButton from "../../../components/styled/PrimaryButton.styled";
